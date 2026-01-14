@@ -13,6 +13,7 @@
             --dark:#0f172a;
             --light:#f8fafc;
             --gray:#64748b;
+            --nav-height:70px;
         }
 
         *{
@@ -46,6 +47,7 @@
             justify-content:space-between;
             align-items:center;
             z-index:1000;
+            height:var(--nav-height);
         }
 
         nav a{
@@ -59,7 +61,8 @@
 
         /* HERO */
         .hero{
-            min-height:100vh;
+            height:100vh;
+            padding-top:var(--nav-height);
             display:flex;
             flex-direction:column;
             justify-content:center;
@@ -67,8 +70,9 @@
             text-align:center;
             background:linear-gradient(135deg,#2563eb,#1e40af);
             color:white;
-            padding:20px;
         }
+
+
 
         .hero h1{font-size:3rem;}
         .hero span{color:#c7d2fe;}
@@ -308,9 +312,12 @@
             padding:25px;
         }
 
-        @media(max-width:600px){
-            .hero h1{font-size:2.2rem;}
+        @media (max-width:600px){
+            .hero h1{
+                font-size:2.2rem;
+            }
         }
+
 
         /* SECCIÓN OSCURA (EDUCACIÓN) */
         .dark-section h2{
@@ -369,6 +376,13 @@
             margin:0 auto 3rem;
         }
 
+        .section-subtitle{
+            text-align:center;
+            color:#64748b;
+            max-width:700px;
+            margin:0 auto 3rem;
+        }
+
         .skill-tags{
             display:flex;
             flex-wrap:wrap;
@@ -388,38 +402,93 @@
             color:#64748b;
             font-size:.85rem;
         }
-
-        /* Media Queries para pantallas pequeñas */
-        @media(max-width: 600px) {
-            /* Menu vertical */
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px;
-            }
-            nav div {
-                display: flex;
-                flex-direction: column;
-                margin-top: 10px;
-            }
-            nav a {
-                margin: 8px 0;
+        @media (max-width:768px){
+            :root{
+                --nav-height:70px;
             }
 
-            /* Ajuste de hero */
-            .hero h1 {
-                font-size: 2rem;
+            nav{
+                height:var(--nav-height);
+                padding:8px 12px;
+                display:flex;
+                flex-direction:row;
+                justify-content:space-between;
+                align-items:center;
             }
 
-            .foto-wrapper {
-                width: 140px;
-                height: 140px;
+            nav a{
+                font-size:.85rem;
+                margin:0 6px;
+                white-space:nowrap;
             }
 
-            /* Grid de cards */
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .foto-wrapper{
+                width:140px;
+                height:140px;
+            }
+
+            .foto-wrapper::after{
+                width:160px;
+                height:160px;
+            }
+        }
+
+        /* ===== NAV BASE ===== */
+        nav{
+            position:fixed;
+            top:0;
+            width:100%;
+            background:#0f172a;
+            color:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:12px 24px;
+            z-index:1000;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:20px;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            font-weight:500;
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle{
+            display:none;
+            font-size:1.8rem;
+            background:none;
+            border:none;
+            color:white;
+            cursor:pointer;
+        }
+
+        /* ===== MÓVIL ===== */
+        @media (max-width:768px){
+            .menu-toggle{
+                display:block;
+            }
+
+            .nav-links{
+                position:absolute;
+                top:100%;
+                left:0;
+                width:100%;
+                background:#0f172a;
+                flex-direction:column;
+                align-items:center;
+                gap:16px;
+                padding:16px 0;
+                display:none;
+            }
+
+            .nav-links.active{
+                display:flex;
             }
         }
 
@@ -428,17 +497,22 @@
 
 <body>
 
-<nav>
+<<nav>
     <strong>Mi Portafolio</strong>
-    <div>
+
+    <button class="menu-toggle" aria-label="Abrir menú">
+        ☰
+    </button>
+
+    <div class="nav-links">
         <a href="#perfil">Perfil</a>
         <a href="#habilidades">Habilidades</a>
         <a href="#educacion">Educación</a>
         <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-
+        <a href="#contacto">contactos</a>
     </div>
 </nav>
+
 
 <div class="hero">
     <div class="foto-wrapper">
@@ -732,6 +806,14 @@
 <footer>
     © 2025 | George Moreno
 </footer>
+<script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+        links.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
