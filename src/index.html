@@ -312,9 +312,12 @@
             padding:25px;
         }
 
-        @media(max-width:600px){
-            .hero h1{font-size:2.2rem;}
+        @media (max-width:600px){
+            .hero h1{
+                font-size:2.2rem;
+            }
         }
+
 
         /* SECCIÓN OSCURA (EDUCACIÓN) */
         .dark-section h2{
@@ -399,45 +402,24 @@
             color:#64748b;
             font-size:.85rem;
         }
-        @media (max-width: 768px) {
-
-            nav{
-                padding:10px 20px;
-                flex-direction:column;
-                gap:8px;
+        @media (max-width:768px){
+            :root{
+                --nav-height:70px;
             }
 
-            nav strong{
-                font-size:.95rem;
+            nav{
+                height:var(--nav-height);
+                padding:8px 12px;
+                display:flex;
+                flex-direction:row;
+                justify-content:space-between;
+                align-items:center;
             }
 
             nav a{
-                margin:0 8px;
                 font-size:.85rem;
-            }
-
-            .hero{
-                padding-top:120px; /* compensa el nav fijo */
-            }
-
-            .foto-wrapper{
-                width:150px;
-                height:150px;
-            }
-
-            .foto-wrapper::after{
-                width:170px;
-                height:170px;
-            }
-        }
-        @media (max-width:768px){
-            :root{
-                --nav-height:110px;
-            }
-
-            nav{
-                height:var(--nav-height);
-                padding:10px 16px;
+                margin:0 6px;
+                white-space:nowrap;
             }
 
             .foto-wrapper{
@@ -450,25 +432,63 @@
                 height:160px;
             }
         }
+
+        /* ===== NAV BASE ===== */
+        nav{
+            position:fixed;
+            top:0;
+            width:100%;
+            background:#0f172a;
+            color:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:12px 24px;
+            z-index:1000;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:20px;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            font-weight:500;
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle{
+            display:none;
+            font-size:1.8rem;
+            background:none;
+            border:none;
+            color:white;
+            cursor:pointer;
+        }
+
+        /* ===== MÓVIL ===== */
         @media (max-width:768px){
-            :root{
-                --nav-height:110px;
+            .menu-toggle{
+                display:block;
             }
 
-            nav{
-                height:var(--nav-height);
-                padding:10px 16px;
+            .nav-links{
+                position:absolute;
+                top:100%;
+                left:0;
+                width:100%;
+                background:#0f172a;
                 flex-direction:column;
+                align-items:center;
+                gap:16px;
+                padding:16px 0;
+                display:none;
             }
 
-            .foto-wrapper{
-                width:140px;
-                height:140px;
-            }
-
-            .foto-wrapper::after{
-                width:160px;
-                height:160px;
+            .nav-links.active{
+                display:flex;
             }
         }
 
@@ -477,17 +497,22 @@
 
 <body>
 
-<nav>
+<<nav>
     <strong>Mi Portafolio</strong>
-    <div>
+
+    <button class="menu-toggle" aria-label="Abrir menú">
+        ☰
+    </button>
+
+    <div class="nav-links">
         <a href="#perfil">Perfil</a>
         <a href="#habilidades">Habilidades</a>
         <a href="#educacion">Educación</a>
         <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-
+        <a href="#contacto">contactos</a>
     </div>
 </nav>
+
 
 <div class="hero">
     <div class="foto-wrapper">
@@ -781,6 +806,14 @@
 <footer>
     © 2025 | George Moreno
 </footer>
+<script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+        links.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
