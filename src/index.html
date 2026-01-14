@@ -311,12 +311,6 @@
         @media(max-width:600px){
             .hero h1{font-size:2.2rem;}
         }
-        @media (max-width: 768px) {
-            .hero {
-                margin-top: 140px;
-            }
-        }
-
 
         /* SECCIÓN OSCURA (EDUCACIÓN) */
         .dark-section h2{
@@ -375,6 +369,13 @@
             margin:0 auto 3rem;
         }
 
+        .section-subtitle{
+            text-align:center;
+            color:#64748b;
+            max-width:700px;
+            margin:0 auto 3rem;
+        }
+
         .skill-tags{
             display:flex;
             flex-wrap:wrap;
@@ -394,41 +395,37 @@
             color:#64748b;
             font-size:.85rem;
         }
+        @media (max-width: 768px) {
 
-        /* Media Queries para pantallas pequeñas */
-        @media(max-width: 600px) {
-            /* Menu vertical */
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px;
-            }
-            nav div {
-                display: flex;
-                flex-direction: column;
-                margin-top: 10px;
-            }
-            nav a {
-                margin: 8px 0;
+            nav{
+                padding:10px 20px;
+                flex-direction:column;
+                gap:8px;
             }
 
-            /* Ajuste de hero */
-            .hero h1 {
-                font-size: 2rem;
+            nav strong{
+                font-size:.95rem;
             }
 
-            .foto-wrapper {
-                width: 140px;
-                height: 140px;
+            nav a{
+                margin:0 8px;
+                font-size:.85rem;
             }
 
-            /* Grid de cards */
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .hero{
+                padding-top:120px; /* compensa el nav fijo */
+            }
+
+            .foto-wrapper{
+                width:150px;
+                height:150px;
+            }
+
+            .foto-wrapper::after{
+                width:170px;
+                height:170px;
             }
         }
-
     </style>
 </head>
 
