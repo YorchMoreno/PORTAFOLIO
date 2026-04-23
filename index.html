@@ -2,858 +2,443 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Portafolio | George Moreno</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root{
-            --primary:#2563eb;
-            --dark:#0f172a;
-            --light:#f8fafc;
-            --gray:#64748b;
-            --nav-height:70px;
-        }
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
-        }
-
-        html, body{
-            width:100%;
-            overflow-x:hidden;
-            scroll-behavior:smooth;
-            margin:0;
-            padding:0;
-        }
-
-        body{
-            background:var(--light);
-            color:var(--dark);
-        }
-
-        /* NAV */
-        nav{
-            position:fixed;
-            top:0;
-            width:100%;
-            background:rgba(15,23,42,.95);
-            padding:15px 40px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            z-index:1000;
-            height:var(--nav-height);
-        }
-
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin-left:20px;
-            font-size:.9rem;
-        }
-
-        nav a:hover{color:var(--primary);}
-
-        /* HERO */
-        .hero{
-            height:100vh;
-            padding-top:var(--nav-height);
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            background:linear-gradient(135deg,#2563eb,#1e40af);
-            color:white;
-        }
-
-
-
-        .hero h1{font-size:3rem;}
-        .hero span{color:#c7d2fe;}
-        .hero p{max-width:1000px;margin-top:10px;}
-
-        /* FOTO PERFIL PRO */
-        .foto-wrapper{
-            position:relative;
-            width:190px;
-            height:190px;
-            border-radius:50%;
-            padding:6px;
-            background:linear-gradient(135deg,#93c5fd,#2563eb,#1e40af);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-bottom:25px;
-            animation:float 6s ease-in-out infinite;
-        }
-
-        .foto-wrapper img{
-            width:100%;
-            height:100%;
-            border-radius:50%;
-            object-fit:cover;
-            background:white;
-        }
-
-        /* Animación suave */
-        @keyframes float{
-            0%,100%{transform:translateY(0);}
-            50%{transform:translateY(-10px);}
-        }
-
-        /* Efecto glass alrededor */
-        .foto-wrapper::after{
-            content:"";
-            position:absolute;
-            width:210px;
-            height:210px;
-            border-radius:50%;
-            background:rgba(255,255,255,.15);
-            filter:blur(25px);
-            z-index:-1;
-        }
-
-        /* HABILIDADES TÉCNICAS */
-        #habilidades h3{
-            font-size:1.1rem;
-            margin-bottom:12px;
-            color:var(--primary);
-        }
-
-        .skills-list{
-            list-style:none;
-        }
-
-        .skills-list li{
-            padding:6px 0;
-            font-size:.95rem;
-            color:var(--gray);
-            position:relative;
-            padding-left:18px;
-        }
-
-        .skills-list li::before{
-            content:"▹";
-            position:absolute;
-            left:0;
-            color:var(--primary);
-        }
-
-        /* EDUCACIÓN */
-        #educacion{
-            width:100%;
-            min-height:100vh;
-            max-width:none;
-            background:#0f172a;
-            padding:120px 20px;
-
-        }
-
-        #educacion h3{
-            font-size:1.1rem;
-            margin-bottom:8px;
-            color:var(--primary);
-        }
-
-        .edu-institucion{
-            font-weight:600;
-            font-size:.95rem;
-            color:var(--dark);
-        }
-
-        .edu-lugar{
-            font-size:.9rem;
-            color:var(--gray);
-            margin:4px 0;
-        }
-
-        .edu-periodo{
-            font-size:.85rem;
-            color:#94a3b8;
-        }
-
-        .edu-list{
-            list-style:none;
-            margin-top:10px;
-        }
-
-        .edu-list li{
-            font-size:.9rem;
-            color:var(--gray);
-            padding:5px 0;
-            position:relative;
-            padding-left:18px;
-        }
-
-        .edu-list li::before{
-            content:"▹";
-            position:absolute;
-            left:0;
-            color:var(--primary);
-        }
-
-        .btn{
-            margin-top:25px;
-            padding:12px 30px;
-            border:none;
-            border-radius:30px;
-            background:white;
-            color:#1e40af;
-            font-weight:600;
-            cursor:pointer;
-            text-decoration:none;
-        }
-
-        /* SECTIONS (EXCEPTO CONTACTO) */
-        section:not(.contact-section){
-            padding:100px 20px;
-            max-width:1100px;
-            margin:auto;
-        }
-
-        section h2{
-            text-align:center;
-            margin-bottom:50px;
-            font-size:2rem;
-        }
-
-        /* CARDS */
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:25px;
-        }
-
-        .card{
-            background:white;
-            padding:25px;
-            border-radius:16px;
-            box-shadow:0 10px 25px rgba(0,0,0,.08);
-            transition:.3s;
-        }
-
-        .card:hover{transform:translateY(-8px);}
-
-        /* CONTACTO */
-        .contact-section{
-            min-height:100vh;
-            width:100%;
-            background-color:var(--dark);
-            color:#e5e7eb;
-
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            padding:80px 20px;
-        }
-
-        .section-title{
-            font-size:2rem;
-            text-align:center;
-            margin-bottom:10px;
-            color:#38bdf8;
-        }
-
-        .section-subtitle{
-            text-align:center;
-            font-size:1rem;
-            margin-bottom:40px;
-            color:#cbd5f5;
-        }
-
-        .contact-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:20px;
-            max-width:1000px;
-            margin:0 auto;
-            width:100%;
-        }
-
-        .contact-card{
-            background-color:#020617;
-            border:1px solid #1e293b;
-            border-radius:10px;
-            padding:20px;
-            transition:.3s;
-        }
-
-        .contact-card:hover{
-            transform:translateY(-5px);
-            box-shadow:0 10px 25px rgba(56,189,248,.15);
-        }
-
-        .contact-label{
-            display:block;
-            font-size:.9rem;
-            color:#94a3b8;
-            margin-bottom:8px;
-        }
-
-        .contact-card a{
-            color:#e5e7eb;
-            text-decoration:none;
-            font-weight:500;
-            word-break:break-word;
-        }
-
-        .contact-card a:hover{color:#38bdf8;}
-
-        footer{
-            background:var(--dark);
-            color:white;
-            text-align:center;
-            padding:25px;
-        }
-
-        @media (max-width:600px){
-            .hero h1{
-                font-size:2.2rem;
-            }
-        }
-
-
-        /* SECCIÓN OSCURA (EDUCACIÓN) */
-        .dark-section h2{
-            color:#c7d2fe;
-        }
-
-        .dark-section .card{
-            background: rgba(2,6,23,.97);
-            border:1px solid #1e293b;
-            box-shadow:0 10px 25px rgba(0,0,0,.4);
-        }
-
-
-        .dark-section h3{
-            color:#93c5fd;
-        }
-
-        .dark-section .edu-institucion{
-            color:#e5e7eb;
-        }
-
-        .dark-section .edu-lugar,
-        .dark-section .edu-periodo,
-        .dark-section .edu-list li{
-            color:#cbd5f5;
-        }
-        .badge{
-            display:inline-block;
-            padding:4px 10px;
-            font-size:.75rem;
-            font-weight:600;
-            border-radius:12px;
-            margin-bottom:10px;
-            margin-right:6px;
-        }
-
-        .badge.work{ background:#dbeafe; color:#1e40af; }
-        .badge.data{ background:#dcfce7; color:#166534; }
-        .badge.tech{ background:#ede9fe; color:#5b21b6; }
-        .badge.soft{ background:#fff7ed; color:#9a3412; }
-
-        /* ===== FIX TEXTO EN SECCIONES OSCURAS ===== */
-        .dark-section .card p,
-        .dark-section .card strong,
-        .dark-section .card li {
-            color: #e5e7eb;
-        }
-
-        .dark-section .card h3 {
-            color: #93c5fd;
-        }
-        .section-subtitle{
-            text-align:center;
-            color:#64748b;
-            max-width:700px;
-            margin:0 auto 3rem;
-        }
-
-        .section-subtitle{
-            text-align:center;
-            color:#64748b;
-            max-width:700px;
-            margin:0 auto 3rem;
-        }
-
-        .skill-tags{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-        }
-
-        .skill-tags span{
-            background:#eef2ff;
-            color:#1e3a8a;
-            padding:6px 12px;
-            border-radius:999px;
-            font-size:.9rem;
-            font-weight:500;
-        }
-
-        .level{
-            color:#64748b;
-            font-size:.85rem;
-        }
-        @media (max-width:768px){
-            :root{
-                --nav-height:70px;
-            }
-
-            nav{
-                height:var(--nav-height);
-                padding:8px 12px;
-                display:flex;
-                flex-direction:row;
-                justify-content:space-between;
-                align-items:center;
-            }
-
-            nav a{
-                font-size:.85rem;
-                margin:0 6px;
-                white-space:nowrap;
-            }
-
-            .foto-wrapper{
-                width:140px;
-                height:140px;
-            }
-
-            .foto-wrapper::after{
-                width:160px;
-                height:160px;
-            }
-        }
-
-        /* ===== NAV BASE ===== */
-        nav{
-            position:fixed;
-            top:0;
-            width:100%;
-            background:#0f172a;
-            color:white;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:12px 24px;
-            z-index:1000;
-        }
-
-        .nav-links{
-            display:flex;
-            gap:20px;
-        }
-
-        .nav-links a{
-            color:white;
-            text-decoration:none;
-            font-weight:500;
-        }
-
-        /* Botón hamburguesa */
-        .menu-toggle{
-            display:none;
-            font-size:1.8rem;
-            background:none;
-            border:none;
-            color:white;
-            cursor:pointer;
-        }
-
-        /* ===== MÓVIL ===== */
-        @media (max-width:768px){
-            .menu-toggle{
-                display:block;
-            }
-
-            .nav-links{
-                position:absolute;
-                top:100%;
-                left:0;
-                width:100%;
-                background:#0f172a;
-                flex-direction:column;
-                align-items:center;
-                gap:16px;
-                padding:16px 0;
-                display:none;
-            }
-
-            .nav-links.active{
-                display:flex;
-            }
-        }
-
-    </style>
+    <title>George Moreno | Ingeniero de Sistemas</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-<nav>
-    <strong>Mi Portafolio</strong>
-
-    <button class="menu-toggle" aria-label="Abrir menú">
-        ☰
-    </button>
-
-    <div class="nav-links">
-        <a href="#perfil">Perfil</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#educacion">Educación</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contactos</a>
-    </div>
-</nav>
-
-
-<div class="hero">
-    <div class="foto-wrapper">
-        <img src="img/foto2.png" alt="Foto de George Moreno">
-    </div>
-    <span style="font-size:.95rem; letter-spacing:2px; text-transform:uppercase; color:#c7d2fe;">
-        Ingeniería de Sistemas · Datos · Soporte TI · Tecnología
-    </span>
-    <h1>Hola, soy <span>George Michael Moreno Beltrán</span></h1>
-    <p>
-        Ingeniero de Sistemas con experiencia en soporte TI, análisis de datos y desarrollo web,
-        orientado a la solución de problemas, mejora de procesos y uso estratégico de la tecnología.
-    </p>
-    <a href="docs/CURRICULUM VITAE - GEORGE MORENO.pdf" download class="btn">Descargar Curriculum Vitae</a>
-</div>
-
-<section id="perfil">
-    <h2>Perfil Profesional</h2>
-    <div class="card">
-        Soy Ingeniero de Sistemas, con formación complementaria en asistencia administrativa, lo que me permite tener una visión integral entre la tecnología y la gestión de procesos. Mi enfoque profesional está orientado principalmente a la ingeniería, el análisis de datos y el desarrollo de soluciones tecnológicas que aporten valor real a las organizaciones.<br>
-
-        <br> Cuento con habilidades en programación, manejo y análisis de información, validación de datos y uso de herramientas tecnológicas para la optimización de procesos y la toma de decisiones. Me interesa transformar datos en información útil, clara y accionable, apoyando la eficiencia operativa y estratégica mediante soluciones bien estructuradas y funcionales.<br>
-
-        <br> Me caracterizo por ser una persona analítica, organizada y orientada a resultados, con facilidad para aprender nuevas tecnologías y adaptarme a distintos entornos. Tengo experiencia trabajando tanto de manera autónoma como en equipo, manteniendo una comunicación clara y un alto sentido de responsabilidad.<br>
-
-        <br> Busco continuar desarrollándome como profesional en el área de la ingeniería de sistemas, el análisis de datos y la programación, participando en proyectos que representen retos técnicos y oportunidades de crecimiento, donde pueda aplicar mis conocimientos, fortalecer mis habilidades y generar impacto positivo a través de la tecnología.
-    </div>
-</section>
-
-<section id="habilidades">
-    <h2>Habilidades Técnicas</h2>
-    <p class="section-subtitle">
-        Tecnologías y competencias aplicadas en entornos académicos, laborales y proyectos personales
-    </p>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Desarrollo y Programación</h3>
-            <div class="skill-tags">
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#hero">
+                <i class="bi bi-code-slash"></i> George Moreno
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#perfil">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#educacion">Educación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proyectos">Experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <h3>Datos y Herramientas Analíticas</h3>
-            <div class="skill-tags">
-                <span>Excel (avanzado)</span>
-                <span>Power BI</span>
-                <span>Inteligencia Artificial</span>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-particles"></div>
+        <div class="container" style="position:relative; z-index:2;">
+            <div class="hero-row py-5">
+
+                <!-- Texto izquierda -->
+                <div class="hero-text-col" data-aos="fade-right">
+                    <div class="hero-eyebrow">
+                        <span></span> Disponible para nuevas oportunidades
+                    </div>
+                    <h1 class="hero-title">
+                        Hola, soy<br>
+                        <span class="gradient-text">George Moreno</span>
+                    </h1>
+                    <div class="hero-pills mb-4">
+                        <span class="badge-pill"><i class="bi bi-cpu"></i> Ingeniería de Sistemas</span>
+                        <span class="badge-pill"><i class="bi bi-bar-chart"></i> Análisis de Datos</span>
+                        <span class="badge-pill"><i class="bi bi-tools"></i> Soporte TI</span>
+                    </div>
+                    <p class="hero-description">
+                        Ingeniero de Sistemas con experiencia en soporte TI, análisis de datos y desarrollo web,
+                        orientado a la solución de problemas y uso estratégico de la tecnología.
+                    </p>
+                    <div class="hero-buttons d-flex flex-wrap gap-3">
+                        <a href="docs/CURRICULUM VITAE - GEORGE MORENO.pdf" download class="btn btn-primary btn-lg">
+                            <i class="bi bi-download me-2"></i>Descargar CV
+                        </a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Contactar
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">5<span>+</span></div>
+                            <div class="hero-stat-label">Años de experiencia</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">10<span>+</span></div>
+                            <div class="hero-stat-label">Proyectos completados</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">6<span></span></div>
+                            <div class="hero-stat-label">Países gestionados</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto derecha -->
+                <div class="hero-image-col" data-aos="fade-left" data-aos-delay="200">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-glow"></div>
+                        <div class="profile-ring"></div>
+                        <img src="img/foto2.png" alt="George Moreno" class="profile-image">
+
+                        <div class="hero-floating-badge badge-top-left">
+                            <i class="bi bi-shield-check"></i> Soporte TI
+                        </div>
+                        <div class="hero-floating-badge badge-bottom-right">
+                            <i class="bi bi-graph-up"></i> Power BI
+                        </div>
+                        <div class="hero-floating-badge badge-bottom-left">
+                            <i class="bi bi-code-slash"></i> Full Stack
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+        <div class="scroll-indicator">
+            <a href="#perfil"><i class="bi bi-chevron-down"></i></a>
+        </div>
+    </section>
 
-        <div class="card">
-            <h3>Soporte TI y Automatización</h3>
-            <div class="skill-tags">
-                <span>Análisis de datos</span>
-                <span>Validación y limpieza de información</span>
-                <span>Automatización de procesos</span>
-                <span>Tecnico en soporte TI</span>
+    <!-- Perfil Section -->
+    <section id="perfil" class="section-padding bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-header text-center mb-5" data-aos="fade-up">
+                        <h2 class="section-title">Perfil Profesional</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="card profile-card shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-body p-5">
+                            <p class="lead mb-4">
+                                Soy Ingeniero de Sistemas, con formación complementaria en asistencia administrativa, lo que me permite tener una visión integral entre la tecnología y la gestión de procesos.
+                            </p>
+                            <p class="mb-4">
+                                Mi enfoque profesional está orientado principalmente a la ingeniería, el análisis de datos y el desarrollo de soluciones tecnológicas que aporten valor real a las organizaciones.
+                            </p>
+                            <p class="mb-4">
+                                Cuento con habilidades en programación, manejo y análisis de información, validación de datos y uso de herramientas tecnológicas para la optimización de procesos y la toma de decisiones.
+                            </p>
+                            <p class="mb-0">
+                                Me caracterizo por ser una persona analítica, organizada y orientada a resultados, con facilidad para aprender nuevas tecnologías y adaptarme a distintos entornos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="educacion" class="dark-section">
-    <h2>Educación y Formación</h2>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Ingeniería de Sistemas</h3>
-            <p><strong>Título profesional</strong></p>
-            <p>Corporación Universitaria Remington</p>
-            <p>2018 – 2023</p>
-
-            <p style="margin-top:10px;">
-                Formación profesional con énfasis en <strong>programación</strong>,
-                <strong>lógica computacional</strong> y <strong>desarrollo de soluciones de software</strong>,
-                aplicadas a la resolución de problemas y al manejo de información.
-            </p>
+    <!-- Habilidades Section -->
+    <section id="habilidades" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Habilidades Técnicas</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle mt-3">
+                    Tecnologías y competencias aplicadas en entornos académicos, laborales y proyectos personales
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-card h-100">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h3 class="skill-title">Desarrollo y Programación</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-card h-100">
+                        <div class="skill-icon">
+                            <i class="bi bi-bar-chart-line"></i>
+                        </div>
+                        <h3 class="skill-title">Datos y Análisis</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Excel Avanzado</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Análisis de Datos</span>
+                            <span class="skill-tag">Inteligencia Artificial</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-card h-100">
+                        <div class="skill-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h3 class="skill-title">Soporte TI</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Soporte Técnico</span>
+                            <span class="skill-tag">Mantenimiento</span>
+                            <span class="skill-tag">Redes</span>
+                            <span class="skill-tag">Videovigilancia</span>
+                            <span class="skill-tag">Automatización</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Asistencia Administrativa</h3>
-            <p><strong>Formación complementaria</strong></p>
-            <p>Servicio Nacional de Aprendizaje – SENA</p>
-            <p>2017</p>
-
-            <p style="margin-top:10px;">
-                Formación orientada a <strong>gestión administrativa</strong>,
-                <strong>manejo de información</strong>, <strong>atención al cliente</strong>
-                y apoyo a procesos organizacionales.
-            </p>
+    <!-- Educación Section -->
+    <section id="educacion" class="section-padding bg-dark text-light">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title text-light">Educación y Formación</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="education-card h-100">
+                        <div class="education-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h3 class="education-title">Ingeniería de Sistemas</h3>
+                        <p class="education-degree">Título Profesional</p>
+                        <p class="education-institution">Corporación Universitaria Remington</p>
+                        <p class="education-period">2018 – 2023</p>
+                        <p class="education-description">
+                            Formación profesional con énfasis en programación, lógica computacional y desarrollo de soluciones de software.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="education-card h-100">
+                        <div class="education-icon">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+                        <h3 class="education-title">Asistencia Administrativa</h3>
+                        <p class="education-degree">Formación Complementaria</p>
+                        <p class="education-institution">SENA</p>
+                        <p class="education-period">2017</p>
+                        <p class="education-description">
+                            Formación orientada a gestión administrativa, manejo de información y atención al cliente.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="education-card h-100">
+                        <div class="education-icon">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <h3 class="education-title">Cursos y Certificaciones</h3>
+                        <ul class="education-list">
+                            <li>Soporte técnico para equipos de cómputo</li>
+                            <li>English does work level 1</li>
+                            <li>Digitalización con Google</li>
+                            <li>Ciberseguridad en teletrabajo</li>
+                            <li>Gestión de riesgos y seguridad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Cursos y Certificaciones</h3>
+    <!-- Proyectos/Experiencia Section -->
+    <section id="proyectos" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Experiencia y Proyectos</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="row g-4">
+                <!-- Proyecto 1 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card h-100">
+                        <div class="project-badges">
+                            <span class="badge bg-primary">Experiencia Laboral</span>
+                            <span class="badge bg-info">Soporte TI</span>
+                        </div>
+                        <h3 class="project-title">Soporte Técnico TI - Sector Petrolero</h3>
+                        <p class="project-description">
+                            Experiencia en soporte técnico TI corporativo, brindando atención a usuarios, resolución de incidencias y apoyo en procesos de migración de datos.
+                        </p>
+                        <ul class="project-highlights">
+                            <li><i class="bi bi-check-circle-fill"></i> Soporte técnico a usuarios en sitio</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Migración y validación de datos</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Instalación de sistemas operativos</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Mantenimiento preventivo y correctivo</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card h-100">
+                        <div class="project-badges">
+                            <span class="badge bg-primary">Experiencia Laboral</span>
+                            <span class="badge bg-success">Análisis de Datos</span>
+                        </div>
+                        <h3 class="project-title">Analista de Datos - Gestión Latinoamérica</h3>
+                        <p class="project-description">
+                            Análisis y gestión de bases de datos a nivel Latinoamérica, consolidando información de seis países con altos estándares de calidad.
+                        </p>
+                        <ul class="project-highlights">
+                            <li><i class="bi bi-check-circle-fill"></i> Consolidación de datos multinacionales</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Depuración y normalización de bases de datos</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Control de calidad de información</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Excel avanzado y Power BI</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-badge">Excel</span>
+                            <span class="tech-badge">Power BI</span>
+                        </div>
+                    </div>
+                </div>
 
-            <p style="margin-bottom:10px;">
-                Formación continua orientada al fortalecimiento de competencias en
-                <strong>soporte técnico</strong>, <strong>seguridad de la información</strong>,
-                <strong>gestión de datos</strong> y <strong>entornos digitales</strong>.
-            </p>
+                <!-- Proyecto 3 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card h-100">
+                        <div class="project-badges">
+                            <span class="badge bg-warning text-dark">Freelance</span>
+                            <span class="badge bg-info">Soporte TI</span>
+                        </div>
+                        <h3 class="project-title">Soporte TI y Sistemas de Seguridad</h3>
+                        <p class="project-description">
+                            Prestación de servicios independientes de soporte técnico TI, incluyendo instalación y configuración de sistemas de videovigilancia.
+                        </p>
+                        <ul class="project-highlights">
+                            <li><i class="bi bi-check-circle-fill"></i> Instalación de cámaras de seguridad</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Configuración de red y conectividad</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Diagnóstico y solución de fallas</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Atención directa a clientes</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <ul class="edu-list">
-                <li>Soporte técnico para mantenimiento de equipos de cómputo</li>
-                <li>English does work level 1</li>
-                <li>Digitalización de procesos con herramientas de Google</li>
-                <li>Ciberseguridad en entornos de teletrabajo</li>
-                <li>Gestión de riesgos, seguridad de la información y tratamiento de datos personales</li>
-            </ul>
-
+                <!-- Proyecto 4 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card h-100">
+                        <div class="project-badges">
+                            <span class="badge bg-secondary">Proyecto Técnico</span>
+                        </div>
+                        <h3 class="project-title">Obsidian - Sistema de Autenticación Full Stack</h3>
+                        <p class="project-description">
+                            Aplicación web de autenticación Full Stack con frontend interactivo y backend en Node.js, implementando JWT para control de sesiones.
+                        </p>
+                        <ul class="project-highlights">
+                            <li><i class="bi bi-check-circle-fill"></i> Arquitectura cliente-servidor</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Autenticación segura con JWT</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Protección de rutas con middleware</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Gestión de sesiones</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express</span>
+                            <span class="tech-badge">JWT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="proyectos">
-    <h2>Experiencia y Proyectos</h2>
-
-    <div class="grid">
-
-        <!-- SOPORTE TI PETROLERA -->
-        <div class="card">
-            <h3>Soporte Técnico TI y Migración de Datos (Sector Petrolero)</h3>
-            <span class="badge work">Experiencia laboral</span>
-            <span class="badge tech">Soporte TI</span>
-
-            <p>
-                Experiencia en <strong>soporte técnico TI corporativo</strong> en el sector petrolero,
-                brindando atención a usuarios, resolución de incidencias tecnológicas y apoyo
-                en procesos de <strong>migración de datos</strong>, garantizando la continuidad operativa
-                y la integridad de la información.
-            </p>
-
-            <hr style="margin:15px 0; border:none; border-top:1px solid #e5e7eb;">
-
-            <ul class="edu-list">
-                <li>Soporte técnico TI a usuarios en sitio</li>
-                <li>Migración y validación de datos</li>
-                <li>Instalación y configuración de sistemas operativos</li>
-                <li>Mantenimiento preventivo y correctivo de equipos de cómputo</li>
-                <li>Configuración básica de software, impresoras y periféricos</li>
-            </ul>
+    <!-- Contacto Section -->
+    <section id="contacto" class="section-padding bg-gradient-dark text-light">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title text-light">Información de Contacto</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle text-light mt-3">
+                    Puedes comunicarte conmigo por los siguientes medios
+                </p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <h4 class="contact-title">Teléfono</h4>
+                        <a href="tel:+573502837223" class="contact-link">+57 350 283 7223</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <h4 class="contact-title">WhatsApp</h4>
+                        <a href="https://wa.me/573502837223" target="_blank" class="contact-link">Enviar mensaje</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <h4 class="contact-title">Correo</h4>
+                        <a href="mailto:maicolmoreno_18@outlook.com" class="contact-link">maicolmoreno_18@outlook.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <h4 class="contact-title">GitHub</h4>
+                        <a href="https://github.com/YorchMoreno" target="_blank" class="contact-link">YorchMoreno</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- ANALISIS Y DATOS -->
-        <div class="card">
-            <h3>Analista de Datos – Gestión y Calidad de Información</h3>
-            <span class="badge work">Experiencia laboral</span>
-            <span class="badge data">Análisis de datos</span>
-
-            <p>
-                Experiencia en <strong>análisis y gestión de bases de datos</strong> a nivel Latinoamérica,
-                consolidando información proveniente de seis países, trabajando con
-                <strong>datos personales sensibles</strong> y asegurando altos estándares de
-                <strong>calidad, confidencialidad y consistencia de la información</strong>.
-            </p>
-
-            <hr style="margin:15px 0; border:none; border-top:1px solid #e5e7eb;">
-
-            <ul class="edu-list">
-                <li>Digitación y consolidación de información de múltiples países</li>
-                <li>Depuración, actualización y normalización de bases de datos</li>
-                <li>Validación de registros y control de calidad de datos</li>
-                <li>Optimización progresiva de la base de datos</li>
-                <li>Gestión de información en Excel avanzado</li>
-            </ul>
-
-            <p style="margin-top:10px; font-weight:600; color:#2563eb;">
-                Impacto: mejora continua de la estructura, confiabilidad y utilidad operativa
-                de la base de datos.
-            </p>
-
-            <p><strong>Herramientas:</strong> Excel avanzado, Power BI</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">© 2026 George Moreno | Desarrollado con <i class="bi bi-heart-fill text-danger"></i></p>
         </div>
+    </footer>
 
-        <!-- SOPORTE TI -->
-        <div class="card">
-            <h3>Soporte Técnico TI y Sistemas de Seguridad (Freelance)</h3>
-            <span class="badge tech">Soporte TI</span>
-            <span class="badge work">Trabajo independiente</span>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
 
-            <p>
-                Prestación de servicios de <strong>soporte técnico TI</strong> de manera independiente,
-                incluyendo instalación, configuración y mantenimiento de
-                <strong>sistemas de videovigilancia</strong>, así como soporte básico de conectividad y red.
-            </p>
-
-            <ul class="edu-list">
-                <li>Instalación y configuración de cámaras de seguridad</li>
-                <li>Soporte técnico y mantenimiento de sistemas</li>
-                <li>Configuración básica de red y conectividad</li>
-                <li>Diagnóstico y solución de fallas técnicas</li>
-                <li>Atención directa a clientes y levantamiento de requerimientos</li>
-            </ul>
-        </div>
-
-        <!-- PORTAFOLIO -->
-        <div class="card">
-            <h3>Desarrollo Web Frontend – Portafolio Profesional</h3>
-            <span class="badge tech">Proyecto técnico</span>
-
-            <p>
-                Desarrollo de <strong>portafolio web profesional</strong> utilizando
-                <strong>HTML5, CSS3 y JavaScript</strong>, enfocado en presentar experiencia,
-                proyectos y habilidades técnicas de forma clara y estructurada.
-            </p>
-
-            <ul class="edu-list">
-                <li>Maquetación semántica con HTML5</li>
-                <li>Estilos personalizados con CSS3</li>
-                <li>Interactividad básica con JavaScript</li>
-                <li>Estructura optimizada para ATS</li>
-            </ul>
-
-            <p><strong>Tecnologías:</strong> HTML5, CSS3, JavaScript</p>
-        </div>
-
-        <!-- OBSIDIAN FULLSTACK -->
-        <div class="card">
-            <h3>Obsidian – Sistema de Autenticación Web (Full Stack)</h3>
-            <span class="badge tech">Proyecto técnico</span>
-            <span class="badge data">Lógica y seguridad</span>
-
-            <p>
-                Desarrollo de una <strong>aplicación web de autenticación Full Stack</strong>,
-                que integra <strong>frontend interactivo</strong> y <strong>backend en Node.js</strong>,
-                implementando flujos completos de <strong>login, registro y recuperación de contraseña</strong>,
-                con control de sesiones mediante <strong>JSON Web Tokens (JWT)</strong>.
-            </p>
-
-            <hr style="margin:15px 0; border:none; border-top:1px solid #e5e7eb;">
-
-            <ul class="edu-list">
-                <li>Arquitectura cliente–servidor con comunicación vía <strong>Fetch API</strong></li>
-                <li>Backend desarrollado con <strong>Node.js</strong> y <strong>Express</strong></li>
-                <li>Autenticación segura basada en <strong>JWT</strong></li>
-                <li>Protección de rutas mediante middleware de verificación de token</li>
-                <li>Gestión de sesiones con <strong>localStorage</strong> y <strong>sessionStorage</strong></li>
-                <li>Validación de credenciales y manejo de errores controlado</li>
-                <li>Flujos completos de registro, inicio de sesión y recuperación de contraseña</li>
-                <li>Habilitación de <strong>CORS</strong> para consumo desde frontend</li>
-                <li>Interfaz moderna con efectos visuales y feedback dinámico al usuario</li>
-                <li>Proyecto configurado como aplicación <strong>DEMO</strong> con advertencia de uso</li>
-            </ul>
-
-            <p style="margin-top:10px; font-weight:600; color:#2563eb;">
-                Enfoque: seguridad básica, control de acceso, experiencia de usuario
-                y estructura escalable para integración con bases de datos reales.
-            </p>
-
-            <p>
-                <strong>Tecnologías:</strong>
-                HTML5, CSS3, JavaScript (ES6),
-                Node.js, Express, JWT, Fetch API
-            </p>
-        </div>
-
-
-        <!-- UNIDADES PRODUCTIVAS -->
-        <div class="card">
-            <h3>Capacitación en Ofimática y Atención al Cliente</h3>
-            <span class="badge soft">Experiencia formativa</span>
-            <span class="badge work">Gobernación de Casanare</span>
-
-            <p>
-                Participación como formador en programas de <strong>capacitación tecnológica</strong>
-                de la Gobernación de Casanare, orientados al fortalecimiento de
-                <strong>competencias digitales</strong> en emprendedores y comunidades.
-            </p>
-
-            <ul class="edu-list">
-                <li>Capacitación en ofimática (Word, Excel, herramientas básicas)</li>
-                <li>Formación en atención al cliente y servicio al usuario</li>
-                <li>Uso de internet, navegación segura y correos electrónicos</li>
-                <li>Acompañamiento y soporte a participantes</li>
-                <li>Comunicación efectiva con perfiles no técnicos</li>
-            </ul>
-        </div>
-
-
-        <!-- SERVICIO AL CLIENTE -->
-        <div class="card">
-            <h3>Atención al Cliente y Soporte a Usuarios</h3>
-            <span class="badge soft">Experiencia complementaria</span>
-
-            <p>
-                Experiencia en <strong>atención al cliente y soporte a usuarios</strong>,
-                gestionando requerimientos, brindando acompañamiento y
-                resolviendo incidencias de manera clara y eficiente.
-            </p>
-
-            <ul class="edu-list">
-                <li>Atención y soporte a usuarios finales</li>
-                <li>Gestión de requerimientos e incidencias</li>
-                <li>Comunicación efectiva con usuarios no técnicos</li>
-                <li>Resolución de problemas y trabajo bajo presión</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-
-<section id="contacto" class="contact-section">
-    <h2 class="section-title">Información de contacto</h2>
-    <p class="section-subtitle">Puedes comunicarte conmigo por los siguientes medios</p>
-
-    <div class="contact-grid">
-        <div class="contact-card">
-            <span class="contact-label">Teléfono</span>
-            <a href="tel:+573502837223">+57 350 283 7223</a>
-        </div>
-
-        <div class="contact-card">
-            <span class="contact-label">WhatsApp</span>
-            <a href="https://wa.me/573502837223" target="_blank">Enviar mensaje</a>
-        </div>
-
-        <div class="contact-card">
-            <span class="contact-label">Correo</span>
-            <a href="mailto:maicolmoreno_18@outlook.com">maicolmoreno_18@outlook.com</a>
-        </div>
-
-        <div class="contact-card">
-            <span class="contact-label">GitHub</span>
-            <a href="https://github.com/YorchMoreno" target="_blank">github.com/YorchMoreno</a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © 2026 | George Moreno
-</footer>
-<script>
-    const toggle = document.querySelector('.menu-toggle');
-    const links = document.querySelector('.nav-links');
-
-    toggle.addEventListener('click', () => {
-        links.classList.toggle('active');
-    });
-</script>
 </body>
 </html>
